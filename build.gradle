@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'net.platinumdigitalgroup'
-version '1.7'
+version "1.7." + (System.getenv("BUILD_NUMBER") ?: "1")
 archivesBaseName = "JVDF"
 
 sourceCompatibility = 1.8
@@ -15,6 +15,15 @@ repositories {
 
 dependencies {
     testCompile "junit:junit:4.12"
+}
+
+task srcJar(type: Jar) {
+    from sourceSets.main.java
+    classifier = 'sources'
+}
+
+artifacts {
+    archives srcJar
 }
 
 uploadArchives {
