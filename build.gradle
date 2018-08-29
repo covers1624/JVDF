@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group 'net.platinumdigitalgroup'
+version '1.7'
+archivesBaseName = "JVDF"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            if (project.hasProperty("local_maven")) {
+                repository(url: "file://${local_maven}")
+                pom {
+                    groupId = project.group
+                    artifactId = project.archivesBaseName
+                    project {
+                        name project.archivesBaseName
+                        packaging 'jar'
+                    }
+                }
+            }
+        }
+    }
+}
