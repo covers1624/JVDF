@@ -2,6 +2,8 @@
 
 A parser for Valve Software's KeyValues ("VDF") format, commonly used by Source engine games, written entirely in Java.
 
+This fork simply moves the project to gradle and provides it over maven [here](https://maven.covers1624.net)
+
 ## Features
 
 * Zero dependencies.
